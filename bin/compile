@@ -20,7 +20,7 @@ curl --silent --output /tmp/linux-installer.py https://raw.githubusercontent.com
 
 echo "-----> Installing Calibre"
 
-python2.7 -c "execfile(\"/tmp/linux-installer.py\"); main()" > /dev/null 2>&1
+python2.7 -c "execfile(\"/tmp/linux-installer.py\"); main(install_dir=\"$BUILD_DIR\")" 
 
 echo "-----> Setting up path"
 
