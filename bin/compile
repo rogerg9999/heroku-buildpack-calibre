@@ -6,22 +6,21 @@ set -e
 
 # parse and derive params
 BUILD_DIR=$1
-VENDOR_DIR="vendor"
-DOWNLOAD_URL="https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py"
-cd $BUILD_DIR
-mkdir -p $VENDOR_DIR
-cd $VENDOR_DIR
-mkdir -p calibre
-cd calibre
+CACHE_DIR=$2
+LP_DIR=`cd $(dirname $0); cd ..; pwd`
+BUILDPACK_DIR="$(dirname $(dirname $0))"
+VENDORED_CALIBRE="vendor/calibre"
 
+rm -rf "$BUILD_DIR/$VENDORED_CALIBRE"
+mkdir -p "$BUILD_DIR/vendor"
 
 echo "-----> Fetching Calibre"
 
-curl --silent --output linux-installer.py $DOWNLOAD_URL > /dev/null 2>&1
+curl --silent --output /tmp/linux-installer.py https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py > /dev/null 2>&1
 
 echo "-----> Installing Calibre"
 
-python2.7 -c "execfile(\"./linux-installer.py\"); main(install_dir=\"$BUILD_DIR\")" > /dev/null 2>&1
+python2.7 -c "execfile(\"/tmp/linux-installer.py\"); main(install_dir=\"$BUILD_DIR\")" > /dev/null 2>&1
 
 echo "-----> Setting up path"
 
