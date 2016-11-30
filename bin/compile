@@ -26,7 +26,7 @@ python2.7 -c "execfile(\"/tmp/linux-installer.py\"); main(install_dir=\"$BUILD_D
 
 echo "-----> Setting up path"
 
-export PATH=$PATH:$HOME/app/calibre
+PATH=$PATH:$HOME/calibre
 echo $HOME
 echo $PATH
 
