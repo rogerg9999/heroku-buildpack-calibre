@@ -22,7 +22,7 @@ echo "-----> Installing Calibre"
 unset PYTHONPATH
 unset PYTHONHOME
 
-python2.7 -c "execfile(\"/tmp/linux-installer.py\"); main(install_dir=\"$BUILD_DIR\")" 
+python2.7 -c "execfile(\"/tmp/linux-installer.py\"); main(install_dir=\"$BUILD_DIR\")" > /dev/null 2>&1
 
 echo "-----> Setting up path"
 
