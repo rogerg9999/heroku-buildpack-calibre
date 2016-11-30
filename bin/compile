@@ -26,8 +26,7 @@ python2.7 -c "execfile(\"/tmp/linux-installer.py\"); main(install_dir=\"$BUILD_D
 
 echo "-----> Setting up path"
 
-PATH=$PATH:$HOME/calibre
-echo $HOME
+echo "export PATH=\$HOME/calibre:\$PATH" > $build_dir/.profile.d/calibre.sh
 echo $PATH
 
 echo "-----> Calibre install done"
